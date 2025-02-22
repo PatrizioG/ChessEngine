@@ -1,7 +1,15 @@
-﻿[<EntryPoint>]
+﻿open ChessEngine.Board
+
+[<EntryPoint>]
 let main args =
-    printfn "Arguments passed to function : %A" args
-    printfn "Press any key ♔♚"
+    let board: Board = { PiecePositions = [| 1UL; 2UL; 4UL |] }
+    let printable = createPrintableChessboard board
+
+    for i = 0 to 7 do
+        for j = 0 to 7 do
+            printf "%A" printable[8 * i + j]
+
+        printf "\n"
+
     System.Console.ReadLine() |> ignore
-    // Return 0. This indicates success.
     0
